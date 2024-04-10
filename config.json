@@ -1,0 +1,20 @@
+{
+  "start_page": 2,
+  "end_page": 1,
+  "source_lang": "en",
+  "target_lang": "fr",
+  "worker_count": 20,
+  "database": {
+    "mysql": {
+      "host": "localhost",
+      "port": "3306",
+      "username": "root",
+      "password": "",
+      "db_name": "sql_javfim_info"
+    }
+  },
+  "db_model": "javfilm",
+  "thumb_path": "uploads/video_thumb",
+  "poster_path": "uploads/poster_image",
+  "root_path": ""
+}
