@@ -18,7 +18,7 @@ def insert_server(db, slug, episodes):
         if server_id == 0:
             server_obj = Server(
                 name='HD',
-                type='hls',
+                type='iframe',
                 slug=slug,
                 src=item["link_embed"],
             )

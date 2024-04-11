@@ -1,8 +1,9 @@
 from jav4k.models.movie import Movie
 from jav4k.controller.server import insert_server
 from helper import generate_random_string
+from helper import save_image_from_url
 import random
-
+import os
 
 def exist_video(db, slug):
     return db.query(Movie).filter(Movie.slug == slug).first()
@@ -38,6 +39,12 @@ def insert_video(db, video, config):
         except Exception as e:
             print(e)
             db.rollback()
+
+        thumbnail_url = video.get('thumb_url', '')
+        if thumbnail_url != '':
+            save_image_from_url(thumbnail_url,
+                                os.path.join(config.get('thumb_path'),
+                                             '{}.jpg'.format(str(Movie.id), '.jpg')))
 
         # Episodes
         episodes = video['episodes']['server_data']
