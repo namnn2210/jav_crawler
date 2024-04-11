@@ -30,7 +30,7 @@ def insert_video(db, video, config):
             description=video.get('description', ''),
             categories=','.join(video.get('category')),
             tags=','.join(video.get('actor')),
-            thumbnail=video.get('thumb_url', ''),
+            thumbnail=video.get('poster_url', ''),
             fake_views=random.randint(50000, 200000)
         )
         try:
@@ -40,7 +40,7 @@ def insert_video(db, video, config):
             print(e)
             db.rollback()
 
-        thumbnail_url = video.get('thumb_url', '')
+        thumbnail_url = video.get('poster_url', '')
         if thumbnail_url != '':
             save_image_from_url(thumbnail_url,
                                 os.path.join(config.get('thumb_path'),
